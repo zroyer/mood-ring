@@ -104,7 +104,7 @@ const App = () => {
         <PieChart
           lineWidth={25}
           data={insights}
-          label={({ dataEntry }) => dataEntry.value > 5 ? dataEntry.title : null}
+          label={({ dataEntry }) => dataEntry.value > 3 ? dataEntry.title : null}
           labelPosition={87.5}
           labelStyle={{
             fill: '#fff',

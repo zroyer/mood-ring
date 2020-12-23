@@ -1,5 +1,5 @@
 body {
-  background-color: black;
+  background-color: rgb(13, 17, 23);
 }
 
 .container,
@@ -22,7 +22,7 @@ canvas {
 
 .overlay {
   height: 800px;
-  border: 150px solid black;
+  border: 150px solid rgb(13, 17, 23);
   border-radius: 50%;
   z-index: 5;
 }
