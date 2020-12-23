@@ -9,7 +9,7 @@ Leverages [face-api.js](https://github.com/justadudewhohacks/face-api.js) and yo
 - Sad 😔
 - Suprised 😯
 
-![sample](http://i.imgur.com/eCd7Esz.png)
+![sample](http://i.imgur.com/66y9dig.png)
 
 
 
