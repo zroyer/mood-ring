@@ -1,5 +1,13 @@
 import React, {useEffect, useRef, useState} from 'react';
-import * as faceapi from 'face-api.js';
+import {
+  createCanvasFromMedia,
+  detectAllFaces,
+  draw,
+  matchDimensions,
+  nets,
+  resizeResults,
+  TinyFaceDetectorOptions
+} from 'face-api.js';
 import {PieChart} from 'react-minimal-pie-chart';
 import './App.css';
 
@@ -19,13 +27,12 @@ const App = () => {
     const video = document.getElementById('video');
     if (video.getAttribute('listener') !== 'true') {
       video.addEventListener('play', () => {
-        const canvas = faceapi.createCanvasFromMedia(video);
+        const canvas = createCanvasFromMedia(video);
         document.body.append(canvas);
         const displaySize = {width: video.width, height: video.height};
-        faceapi.matchDimensions(canvas, displaySize);
+        matchDimensions(canvas, displaySize);
         setInterval(async () => {
-          const detections = await faceapi
-            .detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
+          const detections = await detectAllFaces(video, new TinyFaceDetectorOptions())
             .withFaceLandmarks()
             .withFaceExpressions();
 
@@ -51,11 +58,11 @@ const App = () => {
             ]);
           }
 
-          const resizedDetections = faceapi.resizeResults(detections, displaySize);
+          const resizedDetections = resizeResults(detections, displaySize);
           canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-          faceapi.draw.drawDetections(canvas, resizedDetections);
-          faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
-          faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
+          draw.drawDetections(canvas, resizedDetections);
+          draw.drawFaceLandmarks(canvas, resizedDetections);
+          draw.drawFaceExpressions(canvas, resizedDetections);
         }, 250);
       });
     }
@@ -66,10 +73,10 @@ const App = () => {
   useEffect(() => {
     const loadModels = async () => {
       Promise.all([
-        await faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
-        await faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
-        await faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
-        await faceapi.nets.faceExpressionNet.loadFromUri('/models')
+        await nets.tinyFaceDetector.loadFromUri('/models'),
+        await nets.faceLandmark68Net.loadFromUri('/models'),
+        await nets.faceRecognitionNet.loadFromUri('/models'),
+        await nets.faceExpressionNet.loadFromUri('/models')
       ])
         .then(() => startVideo())
         .then(() => startDetections())
