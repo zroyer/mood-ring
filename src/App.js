@@ -48,13 +48,13 @@ const App = () => {
             } = detections[0].expressions;
 
             setInsights([
-              { title: 'Angry 😠', value: angry ? angry * 100 : 0, color: 'red'},
-              { title: 'Disgusted 🤢', value: disgusted ? disgusted * 100 : 0, color: 'brown'},
-              { title: 'Fearful 😨', value: fearful ? fearful * 100 : 0, color: 'purple'},
-              { title: 'Happy 😀', value: happy ? happy * 100 : 0, color: 'green'},
-              { title: 'Neutral 😐', value: neutral ? neutral * 100 : 0, color: 'grey'},
-              { title: 'Sad 😔', value: sad ? sad * 100 : 0, color: 'blue'},
-              { title: 'Surprised 😯', value: surprised ? surprised * 100 : 0, color: 'orange'},
+              { title: 'Angry 😠', value: angry ? angry * 100 : 0, color: '#F82B60'},
+              { title: 'Disgusted 🤢', value: disgusted ? disgusted * 100 : 0, color: '#FCB400'},
+              { title: 'Fearful 😨', value: fearful ? fearful * 100 : 0, color: '#FE0AC2'},
+              { title: 'Happy 😀', value: happy ? happy * 100 : 0, color: '#1DC932'},
+              { title: 'Neutral 😐', value: neutral ? neutral * 100 : 0, color: '#666666'},
+              { title: 'Sad 😔', value: sad ? sad * 100 : 0, color: '#2E7EF9'},
+              { title: 'Surprised 😯', value: surprised ? surprised * 100 : 0, color: '#FF702B'},
             ]);
           }
 
