@@ -4,6 +4,7 @@ body {
 
 .container,
 .overlay,
+.overlay-loading,
 canvas {
   padding: 0;
   margin: auto;

@@ -12,7 +12,7 @@ import {PieChart} from 'react-minimal-pie-chart';
 import './App.css';
 
 const App = () => {
-  const [insights, setInsights] = useState([]);
+  const [insights, setInsights] = useState([{ title: 'Neutral 😐', value: 100, color: '#666666'},]);
 
   const startVideo = async () => {
     const video = document.getElementById('video');
@@ -104,7 +104,7 @@ const App = () => {
         <PieChart
           lineWidth={25}
           data={insights}
-          label={({ dataEntry }) => dataEntry.value > 3 ? dataEntry.title : null}
+          label={({ dataEntry }) => insights.length > 1 && dataEntry.value > 3 ? dataEntry.title : null}
           labelPosition={87.5}
           labelStyle={{
             fill: '#fff',
