@@ -1,6 +1,6 @@
 # Mood Ring
 
-Leverages [face-api.js](https://github.com/justadudewhohacks/face-api.js) to recognize 7 emotions:
+Leverages [face-api.js](https://github.com/justadudewhohacks/face-api.js) and your face to recognize 7 emotions:
 - Angry 😠
 - Disgusted 🤢
 - Fearful 😨
@@ -9,8 +9,7 @@ Leverages [face-api.js](https://github.com/justadudewhohacks/face-api.js) to rec
 - Sad 😔
 - Suprised 😯
 
-
-
+![sample](http://i.imgur.com/kRU3kWi.png)
 
 
 
