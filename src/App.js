@@ -1,25 +1,12 @@
 import React, {useEffect, useRef, useState} from 'react';
 import * as faceapi from 'face-api.js';
-import { PieChart } from 'react-minimal-pie-chart';
+import {PieChart} from 'react-minimal-pie-chart';
 import './App.css';
 
 const App = () => {
   const [insights, setInsights] = useState([]);
 
-  async function loadModels() {
-    Promise.all([
-      await faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
-      await faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
-      await faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
-      await faceapi.nets.faceExpressionNet.loadFromUri('/models')
-    ])
-      .then(() => startVideo())
-      .then(() => startDetections())
-      .then((detection) => console.log(detection))
-      .catch((error) => console.log(error));
-  }
-
-  async function startVideo() {
+  const startVideo = async () => {
     const video = document.getElementById('video');
     navigator.getUserMedia(
       {video: {}},
@@ -28,7 +15,7 @@ const App = () => {
     );
   }
 
-  async function startDetections() {
+  const startDetections = async () => {
     const video = document.getElementById('video');
     if (video.getAttribute('listener') !== 'true') {
       video.addEventListener('play', () => {
@@ -75,16 +62,26 @@ const App = () => {
   }
 
   const videoEl = useRef(null);
+
   useEffect(() => {
-    const handleLoadModels = async () => {
-      await loadModels();
-    };
+    const loadModels = async () => {
+      Promise.all([
+        await faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
+        await faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
+        await faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
+        await faceapi.nets.faceExpressionNet.loadFromUri('/models')
+      ])
+        .then(() => startVideo())
+        .then(() => startDetections())
+        .then((detection) => console.log(detection))
+        .catch((error) => console.log(error));
+    }
     let isMounted = false;
     if (!videoEl) {
       return;
     }
     if (!isMounted ) {
-      handleLoadModels();
+      loadModels();
     }
     return () => {
       isMounted = true;
@@ -93,10 +90,10 @@ const App = () => {
 
   return (
     <>
-      <div className="video-container">
+      <div className="container">
         <video ref={videoEl} id="video" width="800" height="600" autoPlay muted></video>
       </div>
-      <div className="overlay-circle">
+      <div className="overlay">
         <PieChart
           lineWidth={25}
           data={insights}
@@ -111,7 +108,6 @@ const App = () => {
         />;
       </div>
     </>
-
   );
 };
 

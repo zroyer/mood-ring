@@ -2,34 +2,27 @@ body {
   background-color: black;
 }
 
-.video-container, canvas {
+.container,
+.overlay,
+canvas {
   padding: 0;
   margin: auto;
   display: block;
   width: 800px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.container, canvas {
   height: 600px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
 }
 
-.overlay-bg, .overlay-circle {
-  padding: 0;
-  margin: auto;
-  display: block;
-  width: 800px;
+.overlay {
   height: 800px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
   border: 150px solid black;
-  z-index: 5;
-}
-
-.overlay-circle {
   border-radius: 50%;
+  z-index: 5;
 }
