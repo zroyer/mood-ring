@@ -42,7 +42,7 @@ const App = () => {
 
             setInsights([
               { title: 'Angry 😠', value: angry ? angry * 100 : 0, color: 'red'},
-              { title: 'Disgusted 🤢', value: disgusted ? disgusted * 100 : 0, color: 'yellow'},
+              { title: 'Disgusted 🤢', value: disgusted ? disgusted * 100 : 0, color: 'brown'},
               { title: 'Fearful 😨', value: fearful ? fearful * 100 : 0, color: 'purple'},
               { title: 'Happy 😀', value: happy ? happy * 100 : 0, color: 'green'},
               { title: 'Neutral 😐', value: neutral ? neutral * 100 : 0, color: 'grey'},
@@ -105,6 +105,7 @@ const App = () => {
             pointerEvents: 'none',
             fontSize: '2px',
           }}
+          animate
         />;
       </div>
     </>
